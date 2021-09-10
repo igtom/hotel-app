@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from 'src/app/models/booking';
+import { bookings } from '../../mock-bookings';
 
 @Component({
   selector: 'app-bookings',
@@ -7,13 +8,7 @@ import { Booking } from 'src/app/models/booking';
   styleUrls: ['./bookings.component.scss'],
 })
 export class BookingsComponent implements OnInit {
-  booking: Booking = {
-    id: 1,
-    name: 'Tom Martin',
-    roomNumber: 187,
-    startDate: new Date(),
-    endDate: new Date('2021-09-21'),
-  };
+  bookings: Booking[] = bookings;
 
   constructor() {}
 
