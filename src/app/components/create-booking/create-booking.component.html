@@ -7,32 +7,57 @@
       <div class="row mb-2">
         <div class="col">
           <label class="form-label">Id</label>
-          <input class="form-control" />
+          <input
+            type="number"
+            class="form-control"
+            name="id"
+            [(ngModel)]="booking.id"
+          />
         </div>
         <div class="col">
           <label class="form-label">Roomnumber</label>
-          <input class="form-control" />
+          <input
+            type="number"
+            class="form-control"
+            name="roomNumber"
+            [(ngModel)]="booking.roomNumber"
+          />
         </div>
       </div>
       <div class="row mb-2">
         <div class="col-4">
           <label class="form-label">Guest Name</label>
-          <input class="form-control" />
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="booking.name"
+          />
         </div>
       </div>
       <div class="row mb-2">
         <div class="col">
           <label class="form-label">Start Date</label>
-          <input class="form-control" />
+          <input
+            type="date"
+            class="form-control"
+            name="startDate"
+            [(ngModel)]="booking.startDate"
+          />
         </div>
         <div class="col">
           <label class="form-label">End Date</label>
-          <input class="form-control" />
+          <input
+            type="date"
+            class="form-control"
+            name="endDate"
+            [(ngModel)]="booking.endDate"
+          />
         </div>
       </div>
     </form>
   </div>
   <div class="card-footer">
-    <button class="btn btn-primary">Submit</button>
+    <button (click)="save()" class="btn btn-primary">Submit</button>
   </div>
 </div>
