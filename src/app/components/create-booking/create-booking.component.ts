@@ -9,6 +9,12 @@ import { BookingService } from '../../services/booking.service';
   styleUrls: ['./create-booking.component.scss'],
 })
 export class CreateBookingComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private bookingService: BookingService
+  ) {}
+
   booking: Booking = {
     id: Math.floor(Math.random() * 10000),
     name: '',
@@ -16,12 +22,6 @@ export class CreateBookingComponent implements OnInit {
     startDate: new Date(),
     endDate: new Date(),
   };
-
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private bookingService: BookingService
-  ) {}
 
   ngOnInit(): void {
     if (this.router.url != '/create') {
