@@ -2,37 +2,26 @@
   <div class="card-header">
     <h5>Create new Booking</h5>
   </div>
-  <div class="card-body">
-    <form>
+  <form [formGroup]="bookingForm" (ngSubmit)="save()">
+    <div class="card-body">
       <div class="row mb-2">
         <div class="col">
           <label class="form-label">Id</label>
-          <input
-            type="number"
-            class="form-control"
-            name="id"
-            [(ngModel)]="booking.id"
-          />
+          <input type="number" class="form-control" formControlName="id" />
         </div>
         <div class="col">
           <label class="form-label">Roomnumber</label>
           <input
             type="number"
             class="form-control"
-            name="roomNumber"
-            [(ngModel)]="booking.roomNumber"
+            formControlName="roomNumber"
           />
         </div>
       </div>
       <div class="row mb-2">
         <div class="col-4">
           <label class="form-label">Guest Name</label>
-          <input
-            type="text"
-            class="form-control"
-            name="name"
-            [(ngModel)]="booking.name"
-          />
+          <input type="text" class="form-control" formControlName="name" />
         </div>
       </div>
       <div class="row mb-2">
@@ -43,6 +32,7 @@
             class="form-control"
             [value]="booking.startDate | date: 'yyyy-MM-dd'"
             (input)="dateChanged($event, true)"
+            formControlName="startDate"
           />
         </div>
         <div class="col">
@@ -52,12 +42,19 @@
             class="form-control"
             [value]="booking.endDate | date: 'yyyy-MM-dd'"
             (input)="dateChanged($event, false)"
+            formControlName="endDate"
           />
         </div>
       </div>
-    </form>
-  </div>
-  <div class="card-footer">
-    <button (click)="save()" class="btn btn-primary">Submit</button>
-  </div>
+    </div>
+    <div class="card-footer">
+      <button
+        [disabled]="bookingForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
 </div>
