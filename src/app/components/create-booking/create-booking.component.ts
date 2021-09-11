@@ -33,13 +33,7 @@ export class CreateBookingComponent implements OnInit {
   }
 
   save(): void {
-    let bookingById = this.bookingService.getBookingById(this.booking.id);
-
-    if (!bookingById) {
-      this.bookingService.addBooking(this.booking);
-    } else {
-      this.bookingService.updateBooking(this.booking);
-    }
+    this.bookingService.addBooking(this.booking).subscribe();
     this.router.navigate(['bookings']);
   }
 

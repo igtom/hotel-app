@@ -24,12 +24,7 @@ export class BookingService {
     return this.http.get<Booking>(`${this.bookingsUrl}/${id}`);
   }
 
-  addBooking(booking: Booking): void {
-    bookings.push(booking);
-  }
-
-  updateBooking(booking: Booking): void {
-    // let currentBooking = this.getBookingById(booking.id);
-    //  currentBooking = booking;
+  addBooking(booking: Booking): Observable<Booking> {
+    return this.http.post<Booking>(this.bookingsUrl, booking);
   }
 }
