@@ -41,8 +41,8 @@
           <input
             type="date"
             class="form-control"
-            name="startDate"
-            [(ngModel)]="booking.startDate"
+            [value]="booking.startDate | date: 'yyyy-MM-dd'"
+            (input)="dateChanged($event, true)"
           />
         </div>
         <div class="col">
@@ -50,8 +50,8 @@
           <input
             type="date"
             class="form-control"
-            name="endDate"
-            [(ngModel)]="booking.endDate"
+            [value]="booking.endDate | date: 'yyyy-MM-dd'"
+            (input)="dateChanged($event, false)"
           />
         </div>
       </div>

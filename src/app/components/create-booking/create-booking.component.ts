@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from 'src/app/models/booking';
 import { bookings } from '../../mock-bookings';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-booking',
@@ -17,12 +17,31 @@ export class CreateBookingComponent implements OnInit {
     endDate: new Date(),
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.router.url != '/create') {
+      let id = Number(this.route.snapshot.paramMap.get('id'));
+      let bookingById = bookings.find((booking) => booking.id === id)!;
+      this.booking = bookingById;
+    }
+  }
 
   save(): void {
-    bookings.push(this.booking);
+    let bookingById = bookings.find((x) => x.id === this.booking.id);
+
+    if (!bookingById) {
+      bookings.push(this.booking);
+    } else {
+      bookingById = this.booking;
+    }
     this.router.navigate(['bookings']);
+  }
+
+  dateChanged(event: Event, isStart: boolean) {
+    let val = (event.target as HTMLInputElement).value;
+    isStart
+      ? (this.booking.startDate = new Date(val))
+      : (this.booking.endDate = new Date(val));
   }
 }
