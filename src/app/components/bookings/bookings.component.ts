@@ -13,4 +13,9 @@ export class BookingsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  deleteBooking(booking: Booking): void {
+    var index = bookings.indexOf(booking);
+    bookings.splice(index, 1);
+  }
 }
