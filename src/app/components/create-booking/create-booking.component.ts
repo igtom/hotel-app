@@ -10,9 +10,9 @@ import { BookingService } from '../../services/booking.service';
 })
 export class CreateBookingComponent implements OnInit {
   booking: Booking = {
-    id: 314,
+    id: Math.floor(Math.random() * 10000),
     name: '',
-    roomNumber: 220,
+    roomNumber: Math.floor(Math.random() * 100),
     startDate: new Date(),
     endDate: new Date(),
   };
@@ -26,8 +26,9 @@ export class CreateBookingComponent implements OnInit {
   ngOnInit(): void {
     if (this.router.url != '/create') {
       let id = Number(this.route.snapshot.paramMap.get('id'));
-      let bookingById = this.bookingService.getBookingById(id);
-      this.booking = bookingById;
+      this.bookingService.getBookingById(id).subscribe((data) => {
+        this.booking = data;
+      });
     }
   }
 
