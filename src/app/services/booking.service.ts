@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { bookings } from '../mock-bookings';
+
 import { Booking } from '../models/booking';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
